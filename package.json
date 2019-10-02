@@ -13,6 +13,7 @@
     "release": ".bin/release"
   },
   "devDependencies": {
+    "@types/node": "^12.7.9",
     "typescript": "^3.6.3"
   },
   "sideEffects": false
