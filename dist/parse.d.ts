@@ -1,0 +1,6 @@
+export declare function MandatoryEnvInt(name: string): number;
+export declare const OptionalEnvInt: (name: string) => number | null;
+export declare function MandatoryEnvString(name: string): string;
+export declare const OptionalEnvString: (name: string) => string | null;
+export declare function MandatoryEnvBool(name: string): boolean;
+export declare const OptionalEnvBool: (name: string) => boolean | null;
