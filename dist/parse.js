@@ -41,4 +41,18 @@ function MandatoryEnvBool(name) {
 }
 exports.MandatoryEnvBool = MandatoryEnvBool;
 exports.OptionalEnvBool = utils_1.makeOptional(MandatoryEnvBool);
+function MandatoryEnvURL(name) {
+    const value = process.env[name];
+    if (value === undefined)
+        throw new errors_1.MissingEnvironmentVariable(name, 'url');
+    try {
+        const url = new URL(value);
+        return url;
+    }
+    catch (e) {
+        throw new errors_1.InvalidEnvironmentVariable(name, 'url');
+    }
+}
+exports.MandatoryEnvURL = MandatoryEnvURL;
+exports.OptionalEnvURL = utils_1.makeOptional(MandatoryEnvURL);
 //# sourceMappingURL=parse.js.map
