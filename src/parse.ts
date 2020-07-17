@@ -49,3 +49,21 @@ export function MandatoryEnvBool(name: string): boolean
 }
 
 export const OptionalEnvBool = makeOptional(MandatoryEnvBool);
+
+export function MandatoryEnvURL(name: string): URL
+{
+  const value = process.env[name];
+  if (value === undefined)
+    throw new MissingEnvironmentVariable(name, 'url');
+  try
+  {
+    const url = new URL(value);
+    return url;
+  }
+  catch (e)
+  {
+    throw new InvalidEnvironmentVariable(name, 'url');
+  }
+}
+
+export const OptionalEnvURL = makeOptional(MandatoryEnvURL);
