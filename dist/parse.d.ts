@@ -1,3 +1,5 @@
+/// <reference types="node" />
+import { URL } from 'url';
 export declare function MandatoryEnvInt(name: string): number;
 export declare const OptionalEnvInt: (name: string) => number | null;
 export declare function MandatoryEnvString(name: string): string;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const url_1 = require("url");
 const errors_1 = require("./errors");
 const utils_1 = require("./utils");
 function MandatoryEnvInt(name) {
@@ -46,7 +47,7 @@ function MandatoryEnvURL(name) {
     if (value === undefined)
         throw new errors_1.MissingEnvironmentVariable(name, 'url');
     try {
-        const url = new URL(value);
+        const url = new url_1.URL(value);
         return url;
     }
     catch (e) {
