@@ -2,7 +2,7 @@
   "compileOnSave": true,
   "compilerOptions": {
     "target": "ES2015",
-    "lib": ["es6", "dom", "es5"],
+    "lib": ["es6"],
     "module": "commonjs",
     "jsx": "react",
     "sourceMap": true,
