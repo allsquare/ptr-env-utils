@@ -1,4 +1,3 @@
-import { URL } from 'url';
 import { MissingEnvironmentVariable, InvalidEnvironmentVariable } from './errors';
 import { makeOptional } from './utils';
 
