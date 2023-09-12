@@ -67,3 +67,18 @@ export function MandatoryEnvURL(name: string): URL
 }
 
 export const OptionalEnvURL = makeOptional(MandatoryEnvURL);
+
+export function MandatoryEnvStringList(
+  name: string,
+  opts: {
+    separator?: string,
+  } = {},
+): Array<string>
+{
+  const value = process.env[name];
+  if (value === undefined)
+    throw new MissingEnvironmentVariable(name, 'string[]');
+  return value.split(opts.separator || ',');
+}
+
+export const OptionalEnvStringList = makeOptional(MandatoryEnvStringList);
