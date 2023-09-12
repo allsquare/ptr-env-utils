@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const url_1 = require("url");
+exports.OptionalEnvStringList = exports.MandatoryEnvStringList = exports.OptionalEnvURL = exports.MandatoryEnvURL = exports.OptionalEnvBool = exports.MandatoryEnvBool = exports.OptionalEnvString = exports.MandatoryEnvString = exports.OptionalEnvInt = exports.MandatoryEnvInt = void 0;
 const errors_1 = require("./errors");
 const utils_1 = require("./utils");
 function MandatoryEnvInt(name) {
@@ -13,7 +13,7 @@ function MandatoryEnvInt(name) {
     return num;
 }
 exports.MandatoryEnvInt = MandatoryEnvInt;
-exports.OptionalEnvInt = utils_1.makeOptional(MandatoryEnvInt);
+exports.OptionalEnvInt = (0, utils_1.makeOptional)(MandatoryEnvInt);
 function MandatoryEnvString(name) {
     const value = process.env[name];
     if (value === undefined)
@@ -21,7 +21,7 @@ function MandatoryEnvString(name) {
     return value;
 }
 exports.MandatoryEnvString = MandatoryEnvString;
-exports.OptionalEnvString = utils_1.makeOptional(MandatoryEnvString);
+exports.OptionalEnvString = (0, utils_1.makeOptional)(MandatoryEnvString);
 function MandatoryEnvBool(name) {
     const value = process.env[name];
     if (value === undefined)
@@ -41,13 +41,13 @@ function MandatoryEnvBool(name) {
     throw new errors_1.InvalidEnvironmentVariable(name, 'boolean');
 }
 exports.MandatoryEnvBool = MandatoryEnvBool;
-exports.OptionalEnvBool = utils_1.makeOptional(MandatoryEnvBool);
+exports.OptionalEnvBool = (0, utils_1.makeOptional)(MandatoryEnvBool);
 function MandatoryEnvURL(name) {
     const value = process.env[name];
     if (value === undefined)
         throw new errors_1.MissingEnvironmentVariable(name, 'url');
     try {
-        const url = new url_1.URL(value);
+        const url = new URL(value);
         return url;
     }
     catch (e) {
@@ -55,5 +55,13 @@ function MandatoryEnvURL(name) {
     }
 }
 exports.MandatoryEnvURL = MandatoryEnvURL;
-exports.OptionalEnvURL = utils_1.makeOptional(MandatoryEnvURL);
+exports.OptionalEnvURL = (0, utils_1.makeOptional)(MandatoryEnvURL);
+function MandatoryEnvStringList(name, opts = {}) {
+    const value = process.env[name];
+    if (value === undefined)
+        throw new errors_1.MissingEnvironmentVariable(name, 'string[]');
+    return value.split(opts.separator || ',');
+}
+exports.MandatoryEnvStringList = MandatoryEnvStringList;
+exports.OptionalEnvStringList = (0, utils_1.makeOptional)(MandatoryEnvStringList);
 //# sourceMappingURL=parse.js.map

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.InvalidEnvironmentVariable = exports.MissingEnvironmentVariable = exports.EnvironmentVariableError = void 0;
 class EnvironmentVariableError extends Error {
     constructor(variableName, message) {
         super(message);
